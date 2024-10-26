@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music App</title>
+    <link  rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+</head>
+<body>
+     <div class="container">
+        <div class="play-box">
+            <div class="img"><img src="pic/besabriyaan.jpeg" alt="Img" class="song-img"></div>
+            <div class="details">
+                <h2>Besabriyaan</h2>
+                <p>Arman Malik</p>
+            </div>
+            <!-- Volume Control -->
+            <div class="volume-control">
+                <i class="fa-solid fa-volume-high"></i>
+                <input type="range" class="progress-bar" id="volume-slider" min="0" max="1" step="0.01" value="1">
+            </div>
+            
+            <audio id="song">
+                <source src="music/BESABRIYAAN Full Video Song  M. S. DHONI - THE UNTOLD STORY  Sushant Singh Rajput.mp3" type="audio/mpeg">
+            </audio>
+            <div class="song-track"></div>
+            <div class="controls">
+                <div class="playback-bar">
+                    <span id="currentTime">0:00</span>
+                    <input type="range" min="0" max="100" class="progress-bar" id="progress" step="1">
+                    <span id="totalTime">0:00</span>
+                </div>
+
+                <div class="player-controls">
+                    <i class="fa-solid fa-backward-step p-c-icon"></i>
+                    <div onclick="playPause()"><i class="fa-solid  p-c-icon" style="opacity:1; font-size:2rem; padding-bottom:2rem;" id="ctrlIcon"></i></div>
+                    <i class="fa-solid fa-forward-step p-c-icon"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="playlist">
+            <nav class="nav1">
+                <h2>#</h2>
+                <h2>Song</h2>
+                <h2>Artist</h2>
+            </nav>
+             <!-- Search and Filter UI -->
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search by song or artist" oninput="searchSongs()">
+            <select id="filter-category" onchange="filterSongs()">
+                <option value="all">All</option>
+                <option value="Arjit Singh">Arjit Singh</option>
+                <option value="Arman Malik">Arman Malik</option>
+
+            </select>
+        </div>
+
+            <div class="songs" id="song-list">
+                <div class="s1 song-details"  data-title="Besabriyaan" data-artist="Arman Malik" onclick="selectSong(this)">
+                    <audio src="music/BESABRIYAAN Full Video Song  M. S. DHONI - THE UNTOLD STORY  Sushant Singh Rajput.mp3" type="audio/mpeg"></audio>
+                    <img src="pic/besabriyaan.jpeg" class="pic">
+                    <h3 class="title">Besabriyaan</h3>
+                    <p>Arman Malik</p>
+                </div>
+                <div class="s2 song-details" data-title="Chale Aana" data-artist="Arman Malik" onclick="selectSong(this)">
+                    <audio src="music/Full Video_ CHALE AANA  De De Pyaar De I Ajay Devgn, Tabu, Rakul Preet l Armaan M, Amaal M,Kunaal V.mp3" type="audio/mpeg"></audio>
+                    <img src="pic/Chale-Aana.jpg" class="pic">
+                    <h3 class="title">Chale Aana</h3>
+                    <p>Arman Malik</p>
+                </div>
+                <div class="s3 song-details" data-title="Kaun Tujhe" data-artist="Arman Malik" onclick="selectSong(this)">
+                    <audio src="music/KAUN TUJHE Full  Video  M.S. DHONI -THE UNTOLD STORY Amaal Mallik PalakSushant Singh Disha Patani.mp3" type="audio/mpeg"></audio>
+                    <img src="pic/Kaun_Tujhe.jpg" class="pic">
+                    <h3 class="title">Kaun Tujhe</h3>
+                    <p>Arman Malik</p>
+                </div>
+                <div class="s4 song-details" data-title="Heeriye" data-artist="Arjit Singh" onclick="selectSong(this)">
+                    <audio src="music/Heeriye (Official Video) Jasleen Royal ft Arijit Singh Dulquer Salmaan Aditya Sharma Taani Tanvir.mp3" type="audio/mpeg"></audio>
+                    <img src="pic/Heeriye.jpg" class="pic">
+                    <h3 class="title">Heeriye</h3>
+                    <p>Arjit Singh</p>
+                </div>
+                <div class="s5 song-details" data-title="Duaa" data-artist="Arjit Singh" onclick="selectSong(this)">
+                    <audio src="music/Jo Bheji Thi Duaa Shanghai Full Song  Emraan hashmi, Abhay Deol, Kalki Koechlin.mp3" type="audio/mpeg"></audio>
+                    <img src="pic/Duaa.png" class="pic">
+                    <h3 class="title">Duaa</h3>
+                    <p>Arjit Singh</p>
+                </div>
+                <div class="s6 song-details" data-title="Hawayein" data-artist="Arjit Singh" onclick="selectSong(this)">
+                    <audio src="music/Hawayein Lyric Video - Jab Harry Met Sejal Shah Rukh Khan, AnushkaArijit SinghPritam.mp3" type="audio/mpeg"></audio>
+                    <img src="pic/Hawayein.jpg" class="pic">
+                    <h3 class="title">Hawayein</h3>
+                    <p>Arjit Singh</p>
+                </div>
+                <div class="s7 song-details" data-title="O Maahi" data-artist="Arjit Singh" onclick="selectSong(this)">
+                    <audio src="music/Dunki_ O Maahi (Full Video)  Shah Rukh Khan  Taapsee Pannu  Pritam  Arijit Singh  Irshad Kamil.mp3" type="audio/mpeg"></audio>
+                    <img src="pic/O-Maahi.jpg" class="pic">
+                    <h3 class="title" style="margin-right:0px;" style="margin-left: 40px;" >O Maahi</h3>
+                    <p>Arjit Singh</p>
+                </div>
+                
+            </div>
+        </div>
+     </div>
+
+     <script  src="script.js"></script>
+</body>
+</html>
